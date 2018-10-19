@@ -8,3 +8,5 @@ eureka:
 spring:
   application:
     name: eureka-client
+logging:
+  config: classpath:config/log4j2.xml
