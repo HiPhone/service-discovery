@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    consul:
+      enabled: true
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        enabled: true
+        service-name: consul-demo
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}${random.uuid}
+  application:
+    name: consule-demo
