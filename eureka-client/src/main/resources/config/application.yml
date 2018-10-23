@@ -7,6 +7,6 @@ eureka:
     prefer-ip-address: true
 spring:
   application:
-    name: eureka-client
+    name: eureka-client-demo
 logging:
   config: classpath:config/log4j2.xml
