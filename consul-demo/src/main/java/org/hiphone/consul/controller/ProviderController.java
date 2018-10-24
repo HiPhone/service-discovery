@@ -1,17 +1,17 @@
 package org.hiphone.consul.controller;
 
+import com.netflix.client.http.HttpRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.hiphone.consul.entity.ResultMessage;
+import org.hiphone.consul.entity.User;
+import org.hiphone.consul.service.UserService;
 import org.hiphone.consul.service.ValueOperationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author HiPhone
@@ -25,6 +25,9 @@ public class ProviderController {
     @Autowired
     private ValueOperationService valueOperationService;
 
+    @Autowired
+    private UserService userService;
+
     @ResponseBody
     @GetMapping("/value/add")
     @ApiOperation(value = "计算加法", notes = "根据传入的a和b的值计算a + b")
@@ -35,4 +38,15 @@ public class ProviderController {
 
         return valueOperationService.add(a, b);
     }
+
+    @ResponseBody
+    @PostMapping("/user/login")
+    @ApiOperation(value = "用户登陆接口", notes = "用户登陆，并解析header的数据")
+    public ResultMessage userLogin(@ApiParam(name = "httpRequest", value = "http请求信息") HttpRequest httpRequest,
+                                   @ApiParam(name = "user", value = "用户登陆的请求体，转换为User") @RequestBody User user) {
+        logger.info("Receive a login request...start to check username and password");
+
+        return userService.userLogin(user);
+    }
+
 }

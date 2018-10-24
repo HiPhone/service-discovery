@@ -14,6 +14,7 @@
         <consul.version>2.0.1.RELEASE</consul.version>
         <ribbon.version>2.2.5</ribbon.version>
         <fastjson.version>1.2.49</fastjson.version>
+        <feign.version>2.0.2.RELEASE</feign.version>
     </properties>
 
     <parent>
@@ -31,7 +32,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-openfeign</artifactId>
+                <version>${feign.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <dependencies>
@@ -57,22 +67,15 @@
             <artifactId>spring-cloud-starter-consul-all</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!-- consul使用actuator进行健康检测 TODO尝试去除健康检测 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.netflix.ribbon</groupId>
-            <artifactId>ribbon</artifactId>
-            <version>${ribbon.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- swagger dependency -->
