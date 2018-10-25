@@ -7,6 +7,9 @@ import org.hiphone.eureka.entity.User;
 import org.hiphone.eureka.service.UserService;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author HiPhone
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

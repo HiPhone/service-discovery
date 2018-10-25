@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.hiphone.eureka.constants.Constant;
 import org.hiphone.eureka.entity.ResultMessage;
+import org.hiphone.eureka.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,10 +74,8 @@ public class ConsumerController {
         logger.info("Starting to login...");
 
         HttpHeaders headers = new HttpHeaders();
-        JSONObject loginData = new JSONObject();
-        loginData.put("username", "hiphone");
-        loginData.put("password", "hiphoneX");
-        HttpEntity<JSONObject> entity = new HttpEntity<>(loginData, headers);
+        User user = new User(Constant.USER_USERNAME, Constant.USER_PASSWORD);
+        HttpEntity<User> entity = new HttpEntity<>(user, headers);
 
         return restTemplate.postForEntity(requestUrl, entity, ResultMessage.class).getBody();
     }
