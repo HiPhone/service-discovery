@@ -17,7 +17,7 @@ public class Constant {
 
     public static final String SWAGGER_CONTACT_NAME = "HiPhone";
 
-    public static final String SWAGGER_CONTACT_URL = "https://github.com/asdfs1";
+    public static final String SWAGGER_CONTACT_URL = "https://github.com/HiPhone";
 
     public static final String SWAGGER_CONTACT_EMAIL = "zhyzyhf@gmail.com";
 

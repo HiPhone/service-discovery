@@ -13,11 +13,8 @@ public class ValueOperateServiceImpl implements ValueOperateService {
 
     @Override
     public ResultMessage add(int elementA, int elementB) {
-        ResultMessage resultMessage = new ResultMessage();
-        int result = elementA + elementB;
-        resultMessage.setCode(ReturnCode.SUCCESS.getCode());
-        resultMessage.setMessage(ReturnCode.SUCCESS.getMessage());
-        resultMessage.setData(result);
-        return resultMessage;
+        return new ResultMessage(ReturnCode.SUCCESS.getCode(),
+                 ReturnCode.SUCCESS.getMessage(),
+                        elementA + elementB );
     }
 }

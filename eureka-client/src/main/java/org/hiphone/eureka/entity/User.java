@@ -2,12 +2,16 @@ package org.hiphone.eureka.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 /**
  * @author HiPhone
  */
+@Getter
+@Setter
 @ApiModel(value = "User", description = "用户定义的java bean")
 public class User implements Serializable {
 
@@ -19,26 +23,10 @@ public class User implements Serializable {
     @ApiModelProperty(name = "password", value = "密码")
     private String password;
 
-    public User() {}
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
