@@ -14,13 +14,14 @@
         <consul.version>2.0.1.RELEASE</consul.version>
         <ribbon.version>2.2.5</ribbon.version>
         <fastjson.version>1.2.49</fastjson.version>
-        <feign.version>2.0.2.RELEASE</feign.version>
+        <feign.version>2.1.0.RELEASE</feign.version>
+        <lombok.version>1.18.4</lombok.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.0.5.RELEASE</version>
     </parent>
 
     <dependencyManagement>
@@ -54,6 +55,12 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
 
         <!-- log4j2 dependency -->
@@ -97,30 +104,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
-        </dependency>
-
-        <!-- 以下为了兼容jdk11加入,springboot 2.1之后可以删除-->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
         </dependency>
 
     </dependencies>

@@ -1,7 +1,7 @@
 package org.hiphone.consul.feign;
 
-import org.hiphone.consul.entity.ResultMessage;
 import org.hiphone.consul.config.FeignClientConfiguration;
+import org.hiphone.consul.entity.ResultMessage;
 import org.hiphone.consul.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -4,23 +4,21 @@ import com.netflix.client.http.HttpRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.hiphone.consul.entity.ResultMessage;
 import org.hiphone.consul.entity.User;
 import org.hiphone.consul.service.UserService;
 import org.hiphone.consul.service.ValueOperationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @author HiPhone
  */
+@Slf4j
 @RestController
 @Api(value = "ProviderController", description = "生产者的接口定义类")
 public class ProviderController {
-
-    private static final Logger logger = LoggerFactory.getLogger(ProviderController.class);
 
     @Autowired
     private ValueOperationService valueOperationService;
@@ -34,7 +32,7 @@ public class ProviderController {
     public ResultMessage getAddResult(@RequestParam(name = "a") @ApiParam(name = "a", value = "计算参数a") int a,
                                       @RequestParam(name = "b") @ApiParam(name = "b", value = "计算参数b") int b) {
 
-        logger.info("Received a request for adding a and b, a = {}, b = {}", a, b);
+        log.info("Received a request for adding a and b, a = {}, b = {}", a, b);
 
         return valueOperationService.add(a, b);
     }
@@ -44,7 +42,7 @@ public class ProviderController {
     @ApiOperation(value = "用户登陆接口", notes = "用户登陆，并解析header的数据")
     public ResultMessage userLogin(@ApiParam(name = "httpRequest", value = "http请求信息") HttpRequest httpRequest,
                                    @ApiParam(name = "user", value = "用户登陆的请求体，转换为User") @RequestBody User user) {
-        logger.info("Receive a login request...start to check username and password");
+        log.info("Receive a login request...start to check username and password");
 
         return userService.userLogin(user);
     }
